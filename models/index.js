@@ -26,7 +26,7 @@ SubTask.belongsTo(Task);
 // Jeder User ist auch ein Contact (optionale 1:1-Beziehung, je nach Modellierung)
 // Oder jeder User hat seine eigenen Contact-Datensätze. Hier als Beispiel "belongsTo"
 User.hasOne(Contact, { as: 'contactDetails', foreignKey: 'userId' });
-Contact.belongsTo(User);
+Contact.belongsTo(User, { foreignKey: 'userId' });
 
 // Datenbank synchronisieren (nicht in Produktion mit force: true!)
 sequelize.sync({ alter: true }) 
