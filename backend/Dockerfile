@@ -1,8 +1,10 @@
-FROM node:16
+FROM node:latest
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
+
+RUN npm install -g npm@11.1.0
 
 RUN npm install
 
