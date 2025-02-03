@@ -20,23 +20,15 @@ const Task = sequelize.define('task', {
     type: DataTypes.ENUM('hoch', 'mittel', 'niedrig'),
     defaultValue: 'mittel'
   },
+  category_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  assignee_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
   due_date: DataTypes.DATEONLY
-});
-
-// Beziehungen
-Task.belongsTo(require('./user'), {
-  foreignKey: 'assignee_id',
-  as: 'assignee'
-});
-
-Task.belongsTo(require('./category'), {
-  foreignKey: 'category_id',
-  as: 'category'
-});
-
-Task.belongsTo(require('./user'), {
-  foreignKey: 'creator_id',
-  as: 'creator'
 });
 
 module.exports = Task;

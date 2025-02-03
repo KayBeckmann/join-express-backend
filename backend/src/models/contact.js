@@ -7,10 +7,7 @@ const Contact = sequelize.define('contact', {
     autoIncrement: true,
     primaryKey: true
   },
-  first_name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
+  first_name: DataTypes.STRING,
   last_name: DataTypes.STRING,
   phone: DataTypes.STRING,
   email: DataTypes.STRING,
@@ -18,12 +15,6 @@ const Contact = sequelize.define('contact', {
   company: DataTypes.STRING,
   birthday: DataTypes.DATEONLY,
   notes: DataTypes.TEXT
-});
-
-// Beziehung zum User
-Contact.belongsTo(require('./user'), {
-  foreignKey: 'user_id',
-  as: 'user'
 });
 
 module.exports = Contact;

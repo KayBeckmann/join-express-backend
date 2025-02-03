@@ -17,10 +17,4 @@ const SubTask = sequelize.define('subtask', {
   }
 });
 
-// Beziehung zum Task
-SubTask.belongsTo(require('./task'), {
-  foreignKey: 'task_id',
-  as: 'task'
-});
-
 module.exports = SubTask;
