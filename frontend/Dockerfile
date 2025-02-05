@@ -1,8 +1,10 @@
-FROM node:latest AS build
+FROM node:20 AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-COPY . .
+COPY index.html .
+COPY public public/
+COPY src src/
 RUN npm run build
 
 FROM nginx:alpine

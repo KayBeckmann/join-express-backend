@@ -1,8 +1,18 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import { VitePWA } from 'vite-plugin-pwa';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  root: './',
+  publicDir: 'public',
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      }
+    }
+  },
   plugins: [
     vue(),
     VitePWA({
@@ -10,8 +20,9 @@ export default defineConfig({
       manifest: {
         name: 'Join',
         short_name: 'Join',
-        theme_color: '#ffffff'
+        start_url: '/',
+        display: 'standalone'
       }
     })
   ]
-});
+})
