@@ -1,18 +1,9 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
+import path from 'path'
 
 export default defineConfig({
-  root: './',
-  publicDir: 'public',
-  build: {
-    outDir: 'dist',
-    rollupOptions: {
-      input: {
-        main: './index.html'
-      }
-    }
-  },
   plugins: [
     vue(),
     VitePWA({
@@ -24,5 +15,14 @@ export default defineConfig({
         display: 'standalone'
       }
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
+  },
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true
+  }
 })

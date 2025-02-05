@@ -2,9 +2,7 @@ FROM node:20 AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-COPY index.html .
-COPY public public/
-COPY src src/
+COPY . .
 RUN npm run build
 
 FROM nginx:alpine
