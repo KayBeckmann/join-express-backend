@@ -1,11 +1,20 @@
 <template>
   <div id="app">
-    <NavMenu v-if="showMenu" />
-    <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
-        <component :is="Component" />
-      </transition>
-    </router-view>
+    <div class="grid-container" v-if="showMenu">
+      <NavMenu></NavMenu>
+      
+      <Header />
+      
+      <div id="main">
+        <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+      </div>
+    </div>
+
+    <router-view v-else></router-view>
   </div>
 </template>
 
@@ -14,6 +23,7 @@ import { computed } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
 import { useRouter } from 'vue-router'
 import NavMenu from '@/components/Shared/NavMenu.vue'
+import Header from '@/components/Shared/Header.vue'
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -23,36 +33,27 @@ const showMenu = computed(() => {
 })
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+<style scoped>
+.grid-container {
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 75px 1fr;
+  grid-template-areas: 
+  "nav header"
+  "nav main";
 }
 
-/* Responsive Menu */
-@media (min-width: 768px) {
-  #app {
-    flex-direction: row;
-  }
-  
-  nav {
-    width: 250px;
-    height: 100vh;
-  }
+#nav { 
+  grid-area: nav;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
+#header { 
+  grid-area: header;
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+#main 
+{ 
+  grid-area: main;
 }
 </style>
