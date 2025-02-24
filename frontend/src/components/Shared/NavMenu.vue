@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-menu">
+  <nav class="nav-menu" id="nav">
     <div class="menu-content">
       <router-link to="/" class="nav-item">
         <span>🏠 Home</span>
