@@ -68,8 +68,8 @@ const handleSuccess = () => {
 /* Container füllt den gesamten Bildschirm */
 .auth-container {
   display: flex;
-  height: 100vh;
-  width: 100%;
+  height: 100dvh;
+  width: 100dvw;
 }
 
 /* Basislayout: zwei Spalten (flex) */
