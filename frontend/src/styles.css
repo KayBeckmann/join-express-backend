@@ -1,3 +1,10 @@
+:root {
+  --header-height: 60px;
+  --nav-width: 200px;
+
+  --nav-background: #2A3647;
+}
+
 html{
   margin: 0;
   padding: 0;

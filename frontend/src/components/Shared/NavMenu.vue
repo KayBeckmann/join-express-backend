@@ -13,6 +13,11 @@
       <router-link to="/contacts" class="nav-item">
         <span>👥 Kontakte</span>
       </router-link>
+      <!-- <button @click="handleLogout" class="logout-button"> -->
+        <!-- 🔒 Abmelden -->
+      <!-- </button> -->
+    </div>
+    <div class="ende menu-content">
       <button @click="handleLogout" class="logout-button">
         🔒 Abmelden
       </button>
@@ -34,22 +39,32 @@ const handleLogout = () => {
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+  color: white;
+}
 .nav-menu {
-  background: #f5f5f5;
-  padding: 1rem;
+  background: var(--nav-background);
+  color: white;
+  padding-top: var(--header-height);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  height: calc(100% - var(--header-height));
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .menu-content {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  min-width: var(--nav-width);
 }
 
 .nav-item {
   padding: 1rem;
   text-decoration: none;
-  color: #2c3e50;
   border-radius: 4px;
   transition: background 0.3s;
 }
